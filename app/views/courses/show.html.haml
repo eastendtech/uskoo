@@ -1,0 +1,25 @@
+%p#notice= notice
+%p
+  %strong Code:
+  = @course.code
+%p
+  %strong Title:
+  = @course.title
+%p
+  %strong Details:
+  = @course.details
+%p
+  %strong Credit hours:
+  = @course.credit_hours
+%p
+  %strong Semester:
+  = @course.semester
+%p
+  %strong Instructor:
+  = @course.instructor
+%p
+  %strong User:
+  = @course.user
+= link_to 'Edit', edit_course_path(@course)
+|
+= link_to 'Back', courses_path
