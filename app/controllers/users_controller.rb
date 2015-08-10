@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
    before_action :signed_in_user,
-                only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+                only: [:index,:edit, :update, :show]
+  before_action :correct_user,   only: [:edit, :update, :show]
+  before_action :admin_user,     only: [:destroy, :index, :edit]
 
   # GET /users
   # GET /users.json
@@ -14,6 +14,12 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    
+    #if user is admin accessing other's page, go straight to edit
+    if (!current_user?(@user) && current_user.admin? )
+      redirect_to :controller => 'users', :action => 'edit', :id => params[:id] 
+    end  
+    
   end
 
   # GET /users/new
@@ -23,6 +29,11 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  #GET /users/:id/courses/
+  def courses
+    @courses = Course.where(user_id: current_user.id)
   end
 
   # POST /users
@@ -78,12 +89,13 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to(root_url) unless current_user?(@user) || current_user.admin?
     end
-
+   
     def admin_user
       redirect_to(root_url) unless current_user.admin?    
     end
+    
     
        
     

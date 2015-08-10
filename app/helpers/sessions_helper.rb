@@ -3,6 +3,7 @@ module SessionsHelper
   #Set session cookie: 
   def log_in(user)
     session[:user_id] = user.id
+    @current_user = user
   end
 
   #Returns the current logged-in user (if any) 

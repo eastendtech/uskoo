@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   resources :courses
   resources :users
+  
+  get 'users/:id/courses', to: 'users#courses'
+    
   get 'site/home'
 
   get 'site/about'

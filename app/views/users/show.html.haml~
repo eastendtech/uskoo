@@ -1,7 +1,7 @@
 %h1 Welcome, #{@user.first_name}
 %h2 Please select an option
 
-- if @user.role==0
+- if user.role==0
  %h3 My Courses
 - else
  %h3 View Students 

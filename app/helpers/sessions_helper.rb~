@@ -3,6 +3,7 @@ module SessionsHelper
   #Set session cookie: 
   def log_in(user)
     session[:user_id] = user.id
+    @current_user
   end
 
   #Returns the current logged-in user (if any) 
@@ -45,6 +46,16 @@ module SessionsHelper
   def destroy
     log_out
     redirect_to root_url
+  end
+  
+  
+  def redirect_back_or(default)
+    redirect_to(session[:return_to] || default)
+    session.delete(:return_to)
+  end
+
+  def store_location
+    session[:return_to] = request.url if request.get?
   end
 
 
