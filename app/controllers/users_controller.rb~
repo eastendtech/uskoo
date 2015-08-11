@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
    before_action :signed_in_user,
-                only: [:edit, :update, :show]
-  before_action :correct_user,   only: [:edit, :update, :show]
+                only: [:index,:edit, :update, :show, :courses]
+  before_action :correct_user,   only: [:edit, :update, :show, :courses]
   before_action :admin_user,     only: [:destroy, :index, :edit]
 
   # GET /users
@@ -31,10 +31,32 @@ class UsersController < ApplicationController
   def edit
   end
 
+  #---------Course Management-----------------------#
+
   #GET /users/:id/courses/
   def courses
-    @courses = Course.where(user_id: current_user.id)
+    @user = User.find(params[:id])
+    @courses = @user.courses #Course.where(user_id: params[:id])
   end
+  
+  def register
+    render :nothing => true
+    if params[:course].present?
+      @course = Course.find(params[:course])
+      current_user.courses << @course unless current_user.courses.include?(@course)
+      current_user.save
+    end
+  end
+  
+  def drop 
+    render :nothing => true 
+    if params[:course].present?
+      @course = Course.find(params[:course])
+      current_user.courses.delete(@course)
+      current_user.save
+    end
+  end
+  
 
   # POST /users
   # POST /users.json

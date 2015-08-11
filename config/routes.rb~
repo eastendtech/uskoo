@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   resources :courses
   resources :users
   
-  
-  
+  get 'users/:id/courses', to: 'users#courses' 
+  get 'users/:id/register', to: 'users#register', as: :register_user
+  get 'users/:id/drop', to: 'users#drop', as: :drop_user
+    
   get 'site/home'
 
   get 'site/about'

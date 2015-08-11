@@ -20,7 +20,7 @@
         %td= course.credit_hours
         %td= course.semester
         %td= course.instructor
-       
+        #TODO: list users (students) attending course
         %td= link_to 'Details', course
         -if current_user.admin?
           %td= link_to 'Edit', edit_course_path(course)

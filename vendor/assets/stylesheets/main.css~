@@ -1,0 +1,28 @@
+.nav {
+  width: 300px;
+  left:50%;
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  
+}
+
+.navbutton {
+  background: #1dabb8;
+  border-radius: 3px;
+  color: #fff;
+  font-size:14px;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 12px 20px;
+  display:block;
+  text-align:center;
+  width:80%;
+}
+
+.navbutton:hover {
+  background: #198d98;
+}
