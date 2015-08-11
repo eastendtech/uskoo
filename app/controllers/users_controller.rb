@@ -36,25 +36,38 @@ class UsersController < ApplicationController
 
   #GET /users/:id/courses/
   def courses
+    store_location
     @user = User.find(params[:id])
     @courses = @user.courses #Course.where(user_id: params[:id])
   end
   
   def register
-    render :nothing => true
+    #render :nothing => true
     if params[:course].present?
       @course = Course.find(params[:course])
       current_user.courses << @course unless current_user.courses.include?(@course)
       current_user.save
+      
+      respond_to do |format|
+        format.html { redirect_back_or courses_url, notice: 'Register was successful.' }
+        format.json { head :no_content }   
+      end   
+      
     end
   end
   
   def drop 
-    render :nothing => true 
+    #render :nothing => true 
     if params[:course].present?
       @course = Course.find(params[:course])
       current_user.courses.delete(@course)
       current_user.save
+      
+      respond_to do |format|
+        format.html { redirect_back_or courses_url, notice: 'Drop was successful.' }
+        format.json { head :no_content }   
+      end         
+      
     end
   end
   

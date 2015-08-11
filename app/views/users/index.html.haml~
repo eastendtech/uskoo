@@ -23,6 +23,7 @@
         %td= user.state
         %td= user.zip_code
         %td= user.role
+        %td= link_to 'Show', user
         %td= link_to 'Edit', edit_user_path(user)
         %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
 %br/

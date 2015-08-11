@@ -2,7 +2,7 @@
   %h1 Welcome, #{@user.first_name}
   %h2 Please select an option
   - if @user.role==0
-    %h3 My Courses
+    %a.navbutton{:href => user_courses_path} My Courses
   - else
-  %a.navbutton View Students 
-  %a.navbutton View Courses
+  %a.navbutton{:href => users_path} View Users
+  %a.navbutton{:href => courses_path} View Courses

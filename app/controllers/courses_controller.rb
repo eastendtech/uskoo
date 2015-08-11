@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
- 
+  layout "main"
   before_action :signed_in_user,
                 only: [:index, :show]
   
@@ -8,6 +8,7 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
+    store_location
     @courses = Course.all
   end
 
@@ -61,6 +62,7 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
+    @course = Course.find(params[:id])
     @course.destroy
     respond_to do |format|
       format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }

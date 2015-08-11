@@ -3,7 +3,7 @@ module SessionsHelper
   #Set session cookie: 
   def log_in(user)
     session[:user_id] = user.id
-    @current_user
+    @current_user = user
   end
 
   #Returns the current logged-in user (if any) 
@@ -49,8 +49,8 @@ module SessionsHelper
   end
   
   
-  def redirect_back_or(default)
-    redirect_to(session[:return_to] || default)
+  def redirect_back_or(default, *more)
+    redirect_to(session[:return_to] || default), *more
     session.delete(:return_to)
   end
 
