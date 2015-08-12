@@ -4,4 +4,7 @@ uSkoo is an online course dashboard application. Users can lookup
 available courses and register for them. Admins can add new courses and 
 view the student profiles.
 
+When registering, entering a role of 1 indicates an admin account. 
 
+Live version available:
+https://mighty-beyond-2762.herokuapp.com/
