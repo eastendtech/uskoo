@@ -48,4 +48,4 @@
     %br/
     = f.number_field :role
   .actions
-    = f.submit :class => 'tinybutton'
+    = f.submit

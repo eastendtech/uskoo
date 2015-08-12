@@ -36,4 +36,4 @@
     %br/
     = f.text_field :user_id
   .actions
-    = f.submit :class => 'tinybutton'
+    = f.submit :class => 'navbutton'

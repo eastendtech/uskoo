@@ -1,5 +1,5 @@
 %h1 Editing Course
 = render 'form'
-
+= link_to 'Show', @course
 
 = link_to 'Back', courses_path, :class => 'tinybutton'

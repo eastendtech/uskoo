@@ -1,26 +1,24 @@
 %p#notice= notice
 %h1 Course Details
-
-%p
-  %strong Code:
-  = @course.code
-%p
-  %strong Title:
-  = @course.title
-%p
-  %strong Details:
-  = @course.details
-%p
-  %strong Credit hours:
-  = @course.credit_hours
-%p
-  %strong Semester:
-  = @course.semester
-%p
-  %strong Instructor:
-  = @course.instructor
+%table
+  %thead
+    %tr
+      %th Code
+      %th Title
+      %th Details
+      %th Credit hours
+      %th Semester 
+      %th Instructor
+  %tbody
+    %tr 
+      %td=@course.code
+      %td=@course.title
+      %td=@course.details
+      %td=@course.credit_hours
+      %td=@course.semester 
+      %td=@course.instructor
 
 -if current_user.admin?
-  = link_to 'Edit', edit_course_path(@course)
-  |
-= link_to 'Back', courses_path
+  = link_to 'Edit', edit_course_path(@course), :class => 'tinybutton'
+  
+= link_to 'Back', courses_path, :class => 'tinybutton'

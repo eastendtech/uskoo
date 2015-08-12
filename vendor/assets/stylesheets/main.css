@@ -29,9 +29,27 @@
   width:80%;
 }
 
-.navbutton:hover {
+.navbutton:hover, .tinybutton:hover {
   background: #198d98;
 }
+
+.tinybutton, .tinybutton:hover, .tinybutton:visited, .tinybutton:link, .tinybutton:active {
+	background: #1dabb8;
+  border-radius: 3px;
+  color: #fff;
+  font-size:14px;
+  font-weight: bold;
+  margin-top: 30px;
+  padding: 12px 20px;
+  display:inline;
+  text-align:center;
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+  left: 1%;
+
+}
+
 
 table {
 	font-family:Arial, Helvetica, sans-serif;
@@ -119,7 +137,16 @@ table tr:hover td {
 
 }
 
+div {
+  padding-bottom: 12px;
+}
 
+body > .tinybutton:last-child {
+  background-color:#ff0000;
+  position: fixed;
+  top: 90%;
+  left: 1%;
+}
 
 
 

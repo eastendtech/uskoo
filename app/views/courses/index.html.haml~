@@ -29,4 +29,5 @@
           %td= link_to 'Drop', drop_user_path(:course => course.id), data: { confirm: 'Are you sure?' }
        
 %br/
-= link_to 'New Course', new_course_path
+-if current_user.admin?
+  = link_to 'New Course', new_course_path
